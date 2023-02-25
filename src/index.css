@@ -11,12 +11,18 @@
   overflow-x: hidden;
   font-family: sans-serif;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+.heading{
+  width: 400px;
+  text-align: center;
+}
+
 .box{
-  width: 500px;
+  width: 400px;
   padding: 20px;
   box-shadow: 5px 5px 4px #e4e4e4;
   display: flex;
@@ -25,6 +31,29 @@
   align-items: center;
   border-left: 1px solid #e4e4e4;
   border-top: 1px solid #e4e4e4;
+}
+
+.custom-form{
+  width: 100%;
+}
+
+.btn{
+  width: 100%;
+  margin-top: 5px;
+}
+
+.error-msg{
+  width: 100%;
+  color: red;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.info-msg{
+  width: 100%;
+  color: green;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .photo{
