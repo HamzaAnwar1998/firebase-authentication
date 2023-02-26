@@ -1,6 +1,6 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Home } from './Components/Home';
-import { Login } from './Components/Login';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {Home} from './Components/Home';
+import {Login} from './Components/Login';
 
 function App() {
 
@@ -8,8 +8,8 @@ function App() {
     <div className="wrapper">
       <Router>
         <Routes>
-          <Route exact path="/" element={<Home/>} />
-          <Route path='/login' element={<Login/>} />
+          <Route exact path="/" element={<Home/>}/>
+          <Route path="/login" element={<Login/>}/>
         </Routes>
       </Router>
     </div>
