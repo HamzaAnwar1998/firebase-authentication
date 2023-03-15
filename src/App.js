@@ -1,34 +1,17 @@
 import {useState} from 'react';
-import {signInWithPopup, GithubAuthProvider} from 'firebase/auth';
 import {auth, provider} from './FirebaseConfig';
+import { signInWithPopup } from 'firebase/auth';
 
 function App() {
 
   const [user, setUser] = useState(null);
-  // const [profilePic, setProfilePic] = useState(null);
 
   const handleGithubLogin=()=>{
-   signInWithPopup(auth, provider).then((result)=>{
-    setUser(result.user);
-    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-    const credential = GithubAuthProvider.credentialFromResult(result);
-    const accessToken = credential.accessToken;
-    console.log(accessToken);
-   }).catch((error)=>{
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log(errorCode);
-    console.log(errorMessage);
-
-    // The email of the user's account used.
-    const email = error.customData.email;
-    console.log(email);
-
-    // The AuthCredential type that was used.
-    const credential = GithubAuthProvider.credentialFromError(error);
-    console.log(credential);
-   })
+    signInWithPopup(auth, provider).then((result)=>{
+      setUser(result.user);
+    }).catch((err)=>{
+      console.log(err);
+    })
   }
 
   const handleLogout=()=>{
@@ -41,7 +24,8 @@ function App() {
       <div className='box'>
 
         {user?(
-              <>
+              // show user data with a logout button if we have user
+               <>
                 <button className='btn btn-secondary btn-md'
                   onClick={handleLogout}>
                   LOGOUT
@@ -51,10 +35,11 @@ function App() {
                 <div className='photo'>
                   <img src={user.photoURL} alt="dp" referrerPolicy='no-referrer'/>
                 </div>
-              </>
+                </>
             ):(
+              // otherwise show a button to login user with github
               <button className="btn btn-secondary btn-md"
-                onClick={handleGithubLogin}>
+              onClick={handleGithubLogin}>
                   Sign In With Github
               </button>
            )}
